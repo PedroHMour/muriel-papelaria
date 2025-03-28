@@ -1,24 +1,24 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';  // Substituímos 'Switch' por 'Routes'
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';  // Importando o Footer
 import Home from './pages/Home';
-import CartPage from './pages/CartPage';
-import ProductPage from './pages/ProductPage';
-import { CartProvider } from './context/CartContext';
+import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
+import './styles/global.css';
 
-const App = () => {
+function App() {
   return (
-    <CartProvider>
-      <Header />
-      <Routes>  {/* Usando 'Routes' no lugar de 'Switch' */}
+    <Router>
+      <Navbar />
+      <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/cart" element={<CartPage />} />
-        <Route path="/product/:id" element={<ProductPage />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
-      <Footer />
-    </CartProvider>
+      <Footer />  {/* Exibindo o Footer */}
+    </Router>
   );
-};
+}
 
 export default App;

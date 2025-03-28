@@ -1,0 +1,21 @@
+/* Estilos para a barra de navegação */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f8d9e1;
+    align-items: center;
+  }
+  
+  .navbar-logo {
+    font-size: 24px;
+    color: #ec5288;
+    font-weight: bold;
+  }
+  
+  .navbar-cart {
+    display: flex;
+    align-items: center;
+    color: #ec5288;
+  }
+  
