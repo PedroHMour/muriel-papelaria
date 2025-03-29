@@ -112,12 +112,22 @@ const Navbar = () => {
 
       {/* Login e Carrinho */}
       <RightContainer>
+        {/* Se não estiver logado, exibe o botão de login e redireciona para a página de login */}
         <Link to="/login">
           <IconButton>
             <IoPersonCircle size={30} />
             <span>Olá! Faça login</span>
           </IconButton>
         </Link>
+
+        {/* Link para a página de Cadastro */}
+        <Link to="/cadastro">
+          <IconButton>
+            <span>Cadastre-se</span>
+          </IconButton>
+        </Link>
+
+        {/* Ícone do Carrinho */}
         <Link to="/cart">
           <IconButton>
             <FaShoppingCart size={30} />
