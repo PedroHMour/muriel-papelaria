@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Button from '../components/Button'; // Certifique-se de usar o seu botão estilizado
+import Button from '../components/Button'; 
 
 const CadastroContainer = styled.div`
   max-width: 500px;
@@ -102,8 +102,7 @@ const Cadastro = () => {
 
       const result = await response.json();
       if (response.ok) {
-        alert(result.message); // Exibe a mensagem de sucesso
-        // Você pode redirecionar para a página de login ou outra página após o cadastro
+        alert(result.message); 
       } else {
         alert(result.error || 'Erro ao registrar usuário.');
       }
