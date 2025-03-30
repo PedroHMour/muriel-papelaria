@@ -64,7 +64,7 @@ const Home = () => {
       {/* Promo Section */}
       <PromoContainer>
         <PromoCard>
-          <PromoImage src='../assets/bag1.png' alt="Promoção sacolas" />
+          <PromoImage src='./assets/bag1.png' alt="Promoção sacolas" />
           <h3>SACOLAS PERSONALIZADAS</h3>
           <Button onClick={() => alert('Clique aqui para personalizar!')}>Clique aqui</Button>
         </PromoCard>

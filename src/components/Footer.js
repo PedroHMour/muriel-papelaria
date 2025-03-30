@@ -76,10 +76,10 @@ const Footer = () => {
       <FooterSection>
         <FooterTitle>ENTRE EM CONTATO</FooterTitle>
         <ContactInfo>
-          <p>55279981174568</p>
-          <p>27 98117-4568 - somente WhatsApp</p>
-          <p>berenicepapelaria@gmail.com</p>
-          <p>Vila Velha, ES</p>
+          <p>1232143243242</p>
+          <p> somente WhatsApp</p>
+          <p>murielpapelaria@gmail.com</p>
+          <p>Manaus, AM</p>
         </ContactInfo>
         {/* Ícones Sociais */}
         <SocialIcons>
