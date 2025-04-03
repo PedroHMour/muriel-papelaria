@@ -91,8 +91,8 @@ const Cadastro = () => {
     };
 
     try {
-      // Envia os dados para a API de cadastro
-      const response = await fetch('http://localhost:5000/api/account/register', {
+      console.log('Enviando dados para o backend', data); // Log de depuração
+      const response = await fetch('http://localhost:5181/api/account/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

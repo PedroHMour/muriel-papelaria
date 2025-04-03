@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaShoppingCart, FaSearch } from 'react-icons/fa';  // Ícones
-import { IoPersonCircle } from 'react-icons/io5';  // Ícone de Login
+import { FaShoppingCart, FaSearch } from 'react-icons/fa';
+import { IoPersonCircle } from 'react-icons/io5';
 import styled from 'styled-components';
-import logo from '../assets/logo.png';  // Caminho da logo
+import logo from '../assets/logo.png';
 
-// Estilos para a Navbar
 const NavbarContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -88,12 +87,10 @@ const IconButton = styled.div`
 const Navbar = () => {
   return (
     <NavbarContainer>
-      {/* Logo */}
       <LogoContainer>
         <LogoImage src={logo} alt="Muriel Papelaria" />
       </LogoContainer>
 
-      {/* Itens de Navegação */}
       <NavLinks>
         <NavLinkItem to="/">Início</NavLinkItem>
         <NavLinkItem to="/produtos">Produtos</NavLinkItem>
@@ -102,17 +99,7 @@ const Navbar = () => {
         <NavLinkItem to="/como-comprar">Como Comprar</NavLinkItem>
       </NavLinks>
 
-      {/* Barra de Pesquisa (Maior, ocupando mais espaço) */}
-      <SearchContainer>
-        <SearchInput type="text" placeholder="O que você está buscando?" />
-        <button style={{ background: 'transparent', border: 'none' }}>
-          <FaSearch size={20} color="#ec5288" />
-        </button>
-      </SearchContainer>
-
-      {/* Login e Carrinho */}
       <RightContainer>
-        {/* Se não estiver logado, exibe o botão de login e redireciona para a página de login */}
         <Link to="/login">
           <IconButton>
             <IoPersonCircle size={30} />
@@ -120,18 +107,16 @@ const Navbar = () => {
           </IconButton>
         </Link>
 
-        {/* Link para a página de Cadastro */}
         <Link to="/cadastro">
           <IconButton>
             <span>Cadastre-se</span>
           </IconButton>
         </Link>
 
-        {/* Ícone do Carrinho */}
         <Link to="/cart">
           <IconButton>
             <FaShoppingCart size={30} />
-            <span>0</span> {/* Aqui você pode adicionar o número de itens no carrinho */}
+            <span>0</span>
           </IconButton>
         </Link>
       </RightContainer>

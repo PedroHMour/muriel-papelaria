@@ -62,7 +62,6 @@ const PaymentIcon = styled.img`
 const Footer = () => {
   return (
     <FooterContainer>
-      {/* Menu de Navegação */}
       <FooterSection>
         <FooterTitle>MENU</FooterTitle>
         <FooterLink href="#">Início</FooterLink>
@@ -72,16 +71,14 @@ const Footer = () => {
         <FooterLink href="#">Como Comprar</FooterLink>
       </FooterSection>
 
-      {/* Informações de Contato */}
       <FooterSection>
         <FooterTitle>ENTRE EM CONTATO</FooterTitle>
         <ContactInfo>
           <p>1232143243242</p>
-          <p> somente WhatsApp</p>
+          <p>somente WhatsApp</p>
           <p>murielpapelaria@gmail.com</p>
           <p>Manaus, AM</p>
         </ContactInfo>
-        {/* Ícones Sociais */}
         <SocialIcons>
           <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
             <FaInstagram />
@@ -92,7 +89,6 @@ const Footer = () => {
         </SocialIcons>
       </FooterSection>
 
-      {/* Meios de Pagamento */}
       <FooterSection>
         <FooterTitle>Meios de Pagamento</FooterTitle>
         <PaymentMethods>
