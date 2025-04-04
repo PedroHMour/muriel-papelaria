@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { useHistory, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button'; // Certifique-se de que o Button.js está no caminho correto
-import bag from '../assets/bag1.jpg'
-import sacola from '../assets/bag2.jpg'
-
+import bag from '../assets/bag1.jpg';
+import sacola from '../assets/bag2.jpg';
+import promo1 from '../assets/promo1.jpg';  // Novo banner
+import promo2 from '../assets/promo2.jpg';  // Novo banner
 
 const HomeContainer = styled.div`
   padding: 20px;
@@ -12,15 +13,16 @@ const HomeContainer = styled.div`
 `;
 
 const HeroSection = styled.div`
+  position: relative;
   text-align: center;
   padding: 50px 20px;
-  background-color: #f8d9e1;
   border-radius: 10px;
   margin-bottom: 30px;
+  overflow: hidden;
 `;
 
 const HeroTitle = styled.h1`
-  font-size: 36px;
+  font-size: 20px;
   color: #ec5288;
   margin-bottom: 10px;
 `;
@@ -29,6 +31,43 @@ const HeroSubtitle = styled.p`
   font-size: 18px;
   color: #6b95a0;
   margin-bottom: 20px;
+`;
+
+const BannerWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  height: 300px;  // Definindo altura para as imagens
+  overflow: hidden;
+`;
+
+const Banner = styled.div`
+  display: flex;
+  transition: transform 4s ease-in-out;  // Transição suave entre as imagens
+`;
+
+const BannerImage = styled.img`
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+`;
+
+const ArrowButton = styled.button`
+  position: absolute;
+  top: 50%;
+  ${props => props.left ? 'left: 10px;' : 'right: 10px;'}
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
 `;
 
 const PromoContainer = styled.div`
@@ -56,7 +95,6 @@ const PromoCard = styled.div`
   &:hover {
     transform: scale(1.05); /* Aumenta o tamanho do card ao passar o mouse */
   }
-
 `;
 
 const PromoImage = styled.img`
@@ -124,28 +162,48 @@ const BuyButton = styled(Button)`
 const Home = () => {
   const navigate = useNavigate();
   
+  // Estado para o banner atual
+  const [currentBanner, setCurrentBanner] = useState(0);
+
+  const banners = [promo1, promo2, bag, sacola];  // Adicione quantos banners quiser
+
+  // Função que altera o banner a cada 2 segundos
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBanner(prevBanner => (prevBanner + 3) % banners.length);
+    }, 2000);
+    
+    return () => clearInterval(interval);  // Limpeza do intervalo ao desmontar o componente
+  }, []);
 
   const handleCardClick = () => {
     navigate('/sacolas');
-  }; 
+  };
+
+  const goToNextBanner = () => {
+    setCurrentBanner((currentBanner + 1) % banners.length);
+  };
+
+  const goToPreviousBanner = () => {
+    setCurrentBanner((currentBanner - 1 + banners.length) % banners.length);
+  };
+
   return (
     <HomeContainer>
-      {/* Hero Section */}
+      {/* Hero Section com carrossel */}
       <HeroSection>
-        <HeroTitle>Bem-vindo à Muriel Papelaria</HeroTitle>
+        <HeroTitle>É Sua primeira compra ?</HeroTitle>
         <HeroSubtitle>Produtos personalizados para você!</HeroSubtitle>
+        <BannerWrapper>
+          <Banner style={{ transform: `translateX(-${currentBanner * 100}%)` }}>
+            {banners.map((banner, index) => (
+              <BannerImage key={index} src={banner} alt={`Banner ${index}`} />
+            ))}
+          </Banner>
+          <ArrowButton left onClick={goToPreviousBanner}>‹</ArrowButton>
+          <ArrowButton onClick={goToNextBanner}>›</ArrowButton>
+        </BannerWrapper>
       </HeroSection>  
-
-      {/* Promo Section */}
-      <PromoContainer>
-        <PromoCard onClick={handleCardClick}>
-          <PromoImage src={bag} alt='Promoção sacolas' />
-          
-        </PromoCard>
-        <PromoCard onClick={handleCardClick}>
-          <PromoImage src={sacola} alt='Escolha o tamanho ideal' />
-        </PromoCard>
-      </PromoContainer>
 
       {/* Seção de Produtos em Destaque */}
       <h2>Produtos em Destaque</h2>

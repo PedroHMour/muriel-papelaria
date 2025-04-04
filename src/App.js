@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import Cadastro from './pages/Cadastro';  // Importando a página de Cadastro
+import Login from './pages/login'
 import './styles/global.css';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/cadastro" element={<Cadastro />} />  {/* Adicionando a Rota de Cadastro */}
+        <Route path="/login" element={<Login />} />
       </Routes>
       <Footer />  {/* Exibindo o Footer */}
     </Router>
